@@ -1,0 +1,11 @@
+---
+language: ruby
+cache: bundler
+rvm:
+  - 2.6.5
+before_install: gem install bundler -v 2.1.4
+
+script:
+  - RAILS_ENV=test bundle exec rspec
+  - bundle exec rubocop --version
+  - bundle exec rubocop -a
