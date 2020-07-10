@@ -33,7 +33,8 @@ Check the [Net::SFTP.start](http://net-ssh.github.io/net-sftp/) start options fo
 Koine::Filesystem::Adapters::Sftp.new(
   hostname: 'localhost',
   username: 'foo',
-  username: 'foo',
+  password: 'foo',
+  port: 2222,
 )
 ```
 
