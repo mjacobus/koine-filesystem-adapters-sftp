@@ -1,7 +1,7 @@
 # Koine::Filesystem::Adapters::Sftp
 
 
-- [Net::SFTP](https://github.com/net-ssh/net-sftp) adapter for [Koine::Filesystem](https://github.com/mjacobus/koine-filesystem-adapters-sftp)
+- [Net::SFTP](https://github.com/net-ssh/net-sftp) adapter for [Koine::Filesystem](https://github.com/mjacobus/koine-file_system)
 
 [![Build Status](https://travis-ci.org/mjacobus/koine-filesystem-adapters-sftp.svg?branch=master)](https://travis-ci.org/mjacobus/koine-filesystem-adapters-sftp)
 [![Coverage Status](https://coveralls.io/repos/github/mjacobus/koine-filesystem-adapters-sftp/badge.svg?branch=master)](https://coveralls.io/github/mjacobus/koine-filesystem-adapters-sftp?branch=master)
