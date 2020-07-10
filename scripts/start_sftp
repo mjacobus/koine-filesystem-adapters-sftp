@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+path=`pwd`/tmp
+echo $path
+
+docker run \
+    -v $path:/home/ftpuser \
+    -p 2222:22 -d atmoz/sftp \
+    ftpuser:ftppassword:$UID

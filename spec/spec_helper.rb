@@ -14,6 +14,7 @@ end
 
 require 'koine/filesystem/adapters/sftp'
 require 'rspec'
+require 'awesome_print'
 
 FIXTURES_PATH = File.expand_path('fixtures', __dir__)
 
@@ -28,4 +29,16 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+end
+
+def only_key(key, collection)
+  collection.map do |item|
+    item[key]
+  end
+end
+
+def map_files(key, files)
+  files.map do |entry|
+    [entry[:path], entry[key]]
+  end.to_h
 end
