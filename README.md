@@ -30,12 +30,17 @@ Or install it yourself as:
 Check the [Net::SFTP.start](http://net-ssh.github.io/net-sftp/) start options for more details.
 
 ```ruby
-Koine::Filesystem::Adapters::Sftp.new(
+require 'koine/filesystem'
+require 'koine/filesystem/adapters/sftp'
+
+adapter = Koine::Filesystem::Adapters::Sftp.new(
   hostname: 'localhost',
   username: 'foo',
   password: 'foo',
   port: 2222,
 )
+
+fs = Koine::Filesystem::Filesystem.new(adapter)
 ```
 
 ## Development
