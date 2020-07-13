@@ -9,10 +9,22 @@ module Koine
       VERSION = '1.0.0' # also change gemspec
 
       class Sftp < Base
+        # @param [Hash] options a hash containing the same options as Net::SFTP.start
+        #  method plus username and password @see http://net-ssh.github.io/net-sftp/
+        #
+        # @option options [The Net::SFTP::Session] :session if not given it tries to
+        #   create a new one from the options
+        # @option options [String] :hostname the ftp hostname
+        # @option options [String] :username the ftp hostname
+        # @option options [String] :password the ftp password
         def initialize(options)
-          @hostname = options.delete(:hostname)
-          @username = options.delete(:username)
-          @options = options
+          if options[:session]
+            @session = options.delete(:session)
+          else
+            @hostname = options.delete(:hostname)
+            @username = options.delete(:username)
+            @options = options
+          end
         end
 
         def list(path = nil, recursive: false)
@@ -21,7 +33,7 @@ module Koine
 
           entries = []
 
-          ftp.dir.glob(path, matcher) do |item|
+          session.dir.glob(path, matcher) do |item|
             if item.name == '.' || item.name == '..'
               next
             end
@@ -34,8 +46,8 @@ module Koine
 
         private
 
-        def ftp
-          @ftp ||= Net::SFTP.start(@hostname, @username, @options)
+        def session
+          @session ||= Net::SFTP.start(@hostname, @username, @options)
         end
 
         # rubocop:disable Metrics/AbcSize
