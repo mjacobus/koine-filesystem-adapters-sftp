@@ -6,7 +6,7 @@ require 'net/sftp'
 module Koine
   module Filesystem
     module Adapters
-      VERSION = '1.0.0' # also change gemspec
+      VERSION = '1.0.1' # please change koine-filesystem-adapters-sftp.gemspec:5
 
       class Sftp < Base
         # @param [Hash] options a hash containing the same options as Net::SFTP.start

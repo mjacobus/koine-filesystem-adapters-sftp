@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = 'koine-filesystem-adapters-sftp'
-  spec.version       = '1.0.0' # please also change it in lib/koine/filesystem/adapters/sftp.rb
+  spec.version       = '0.1.0' # please change it in lib/koine/filesystem/adapters/sftp.rb:9
   spec.authors       = ['Marcelo Jacobus']
   spec.email         = ['marcelo.jacobus@gmail.com']
 
