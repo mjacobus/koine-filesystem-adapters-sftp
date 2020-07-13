@@ -5,6 +5,7 @@ require 'spec_helper'
 RSpec.describe 'Koine::Filesystem::Adapters::Sftp' do
   subject(:ftp) do
     Koine::Filesystem::Adapters::Sftp.new(
+      hostname: 'localhost',
       username: 'ftpuser',
       password: 'ftppassword',
       port: 2222
@@ -33,7 +34,18 @@ RSpec.describe 'Koine::Filesystem::Adapters::Sftp' do
   end
 
   describe '#list' do
-    describe 'when not recursive' do
+    context 'when not recursive' do
+      subject(:ftp) do
+        Koine::Filesystem::Adapters::Sftp.new(
+          session: Net::SFTP.start(
+            'localhost',
+            'ftpuser',
+            password: 'ftppassword',
+            port: 2222
+          )
+        )
+      end
+
       it 'lists all files in root folder' do
         files = only_key(:path, ftp.list).sort
 
@@ -63,7 +75,7 @@ RSpec.describe 'Koine::Filesystem::Adapters::Sftp' do
       end
     end
 
-    describe 'when is recursive' do
+    context 'when is recursive' do
       it 'lists all files recursively' do
         files = only_key(:path, ftp.list(recursive: true)).sort
 
